@@ -30,12 +30,15 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+
         log.info("Start actual authentication");
+
         final String username = authentication.getName();
 
         final String password = authentication.getCredentials().toString();
 
         User user;
+
         try {
             user = userRepository.findByUsername(username);
         }catch (Exception e){

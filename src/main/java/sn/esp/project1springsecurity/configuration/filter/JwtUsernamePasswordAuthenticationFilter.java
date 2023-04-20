@@ -34,7 +34,8 @@ public class JwtUsernamePasswordAuthenticationFilter extends AbstractAuthenticat
 
     public JwtUsernamePasswordAuthenticationFilter(AuthenticationManager manager,
                                                    JwtConfig jwtConfig,
-                                                   JwtService jwtService){
+                                                   JwtService jwtService) {
+
         super(new AntPathRequestMatcher(jwtConfig.getUrl(), "POST"));
         setAuthenticationManager(manager);
         this.objectMapper = new ObjectMapper();
@@ -69,12 +70,12 @@ public class JwtUsernamePasswordAuthenticationFilter extends AbstractAuthenticat
         response.setContentType("application/json; charset=UTF-8");
         response.getWriter().write(json);
         log.info("End success authentication: {}", accessToken);
-
     }
 
     @Override
     protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
         BaseResponseDTO responseDTO = new BaseResponseDTO();
+
         responseDTO.setCode(String.valueOf(HttpStatus.UNAUTHORIZED.value()));
         responseDTO.setMessage(failed.getLocalizedMessage());
 

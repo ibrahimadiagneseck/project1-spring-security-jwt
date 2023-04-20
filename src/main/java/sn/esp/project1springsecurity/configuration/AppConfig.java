@@ -40,7 +40,6 @@ public class AppConfig {
         return new JwtConfig();
     }
 
-
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();

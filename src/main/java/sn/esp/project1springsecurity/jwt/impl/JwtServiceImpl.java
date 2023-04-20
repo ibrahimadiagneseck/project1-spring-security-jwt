@@ -37,7 +37,6 @@ public class JwtServiceImpl implements JwtService {
 
     private final UserDetailsService userDetailsService;
 
-
     @Override
     public Claims extractClaims(String token) {
         return Jwts
